@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 // In java, "extends" is used for inheritance
@@ -44,8 +45,11 @@ public class MainActivity extends AppCompatActivity {
                 * */
 
                 // Change the text of the texView
+                EditText etInfo = findViewById(R.id.etInput);
+                String message = etInfo.getText().toString();
+
                 TextView tvInfo = findViewById(R.id.tvText);
-                tvInfo.setText("Hello");
+                tvInfo.setText(message);
 
 
 

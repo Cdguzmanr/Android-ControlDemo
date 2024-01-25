@@ -3,4 +3,6 @@
     <string name="welcome">Welcome to my App!</string>
     <string name="picture_of_me">Picture of me</string>
     <string name="display">Display</string>
+    <string name="hello">hello</string>
+    <string name="name">Name</string>
 </resources>
