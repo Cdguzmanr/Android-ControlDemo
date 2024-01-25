@@ -3,11 +3,14 @@ package edu.fvtc.controldemo;
 // using = import
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // In java, "extends" is used for inheritance
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +24,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
                     // R = res folder
         initButton();
+        initTextChangeEvent();
+    }
+
+    private void initTextChangeEvent(){
+        EditText etInfo = findViewById(R.id.etInput);
+
+        etInfo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.d(TAG, "beforeTextChanged: ");
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d(TAG, "onTextChanged: ");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d(TAG, "afterTextChanged: ");
+                TextView tvInfo = findViewById(R.id.tvText);
+                tvInfo.setText(etInfo.getText());
+            }
+        });
     }
 
     private void initButton(){
@@ -51,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView tvInfo = findViewById(R.id.tvText);
                 tvInfo.setText(message);
 
-
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
 
             }
         });
